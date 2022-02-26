@@ -3,7 +3,7 @@ import Alert from "react-bootstrap/Alert";
 
 function Home() {
   return (
-    <Alert variant="primary" className="mt-3">
+    <Alert variant="primary">
       <Alert.Heading>Hey, nice to see you</Alert.Heading>
       <p>
         Aww yeah, you successfully read this important alert message. This

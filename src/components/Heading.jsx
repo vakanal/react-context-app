@@ -5,8 +5,8 @@ import Nav from "react-bootstrap/Nav";
 
 function Heading() {
   return (
-    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-      <Container fluid>
+    <Navbar collapseOnSelect expand="lg" bg="light" className="mb-4">
+      <Container>
         <Navbar.Brand>ToDo List App</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -18,7 +18,7 @@ function Heading() {
               <Nav.Link>Task List</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/add">
-              <Nav.Link>Add Task</Nav.Link>
+              <Nav.Link>Task Form</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
