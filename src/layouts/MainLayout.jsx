@@ -1,16 +1,23 @@
+import { Outlet } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import ErrorBoundary from "../components/ErrorBoundary";
 import Asiding from "../components/Asiding";
 
-function MainLayout({ children }) {
+export default function MainLayout() {
   return (
-    <Row>
-      <Col>{children}</Col>
-      <Col sm={2} className="d-none d-md-block d-lg-block">
-        <Asiding />
-      </Col>
-    </Row>
+    <Container fluid="md">
+      <Row>
+        <Col>
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
+        </Col>
+        <Col sm={2} className="d-none d-md-block d-lg-block">
+          <Asiding />
+        </Col>
+      </Row>
+    </Container>
   );
 }
-
-export default MainLayout;

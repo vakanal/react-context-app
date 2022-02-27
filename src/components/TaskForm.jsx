@@ -11,7 +11,7 @@ const initialTask = {
   done: false,
 };
 
-function TaskForm() {
+export default function TaskForm() {
   const [task, setTask] = useState(initialTask);
   const [validated, setValidated] = useState(false);
   const { tasks, addTask, updateTask } = useContext(GlobalContext);
@@ -109,5 +109,3 @@ function TaskForm() {
     </Form>
   );
 }
-
-export default TaskForm;

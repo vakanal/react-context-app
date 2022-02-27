@@ -1,28 +1,41 @@
-import { Routes, Route } from "react-router-dom";
-import Container from "react-bootstrap/Container";
+import React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { ContextProvider } from "./contexts/GlobalContext";
+import Spinner from "react-bootstrap/Spinner";
+import MainLayout from "./layouts/MainLayout";
 import Heading from "./components/Heading";
 import Home from "./components/Home";
 import TaskForm from "./components/TaskForm";
-import TaskList from "./components/TaskList";
-import MainLayout from "./layouts/MainLayout";
-import { ContextProvider } from "./contexts/GlobalContext";
 
-function App() {
+const TaskList = React.lazy(() => import("./components/TaskList"));
+
+export default function App() {
   return (
-    <ContextProvider>
-      <Container>
+    <BrowserRouter>
+      <ContextProvider>
         <Heading />
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/list" element={<TaskList />} />
-            <Route path="/add" element={<TaskForm />} />
-            <Route path="/edit/:id" element={<TaskForm />} />
-          </Routes>
-        </MainLayout>
-      </Container>
-    </ContextProvider>
+        <Routes>
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route
+              path="list"
+              element={
+                <React.Suspense
+                  fallback={
+                    <Spinner animation="border" role="status">
+                      <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                  }
+                >
+                  <TaskList />
+                </React.Suspense>
+              }
+            />
+            <Route path="add" element={<TaskForm />} />
+            <Route path="edit/:id" element={<TaskForm />} />
+          </Route>
+        </Routes>
+      </ContextProvider>
+    </BrowserRouter>
   );
 }
-
-export default App;

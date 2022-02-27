@@ -6,7 +6,7 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import { GlobalContext } from "../contexts/GlobalContext";
 
-function TaskList() {
+export default function TaskList() {
   const { tasks, deleteTask } = useContext(GlobalContext);
   const navigate = useNavigate();
 
@@ -60,5 +60,3 @@ function TaskList() {
     </Table>
   );
 }
-
-export default TaskList;

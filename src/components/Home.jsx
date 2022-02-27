@@ -1,7 +1,7 @@
 import { LinkContainer } from "react-router-bootstrap";
 import Alert from "react-bootstrap/Alert";
 
-function Home() {
+export default function Home() {
   return (
     <Alert variant="primary">
       <Alert.Heading>Hey, nice to see you</Alert.Heading>
@@ -17,5 +17,3 @@ function Home() {
     </Alert>
   );
 }
-
-export default Home;
