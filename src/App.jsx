@@ -4,10 +4,10 @@ import { ContextProvider } from "./contexts/GlobalContext";
 import Spinner from "react-bootstrap/Spinner";
 import MainLayout from "./layouts/MainLayout";
 import Heading from "./components/Heading";
-import Home from "./components/Home";
-import TaskForm from "./components/TaskForm";
+import Home from "./views/Home";
+import TaskForm from "./views/TaskForm";
 
-const TaskList = React.lazy(() => import("./components/TaskList"));
+const TaskList = React.lazy(() => import("./views/TaskList"));
 
 export default function App() {
   return (

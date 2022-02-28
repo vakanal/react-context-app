@@ -7,7 +7,8 @@ import Button from "react-bootstrap/Button";
 import { GlobalContext } from "../contexts/GlobalContext";
 
 export default function TaskList() {
-  const { tasks, deleteTask } = useContext(GlobalContext);
+  const { getState, deleteTask } = useContext(GlobalContext);
+  const { tasks } = getState(); //! Version A
   const navigate = useNavigate();
 
   return (

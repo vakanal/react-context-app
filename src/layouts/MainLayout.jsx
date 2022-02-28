@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import ErrorBoundary from "../components/ErrorBoundary";
+import ErrorBoundary from "../errors/ErrorBoundary";
 import Asiding from "../components/Asiding";
 
 export default function MainLayout() {
