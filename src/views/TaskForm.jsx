@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { GlobalContext } from "../contexts/GlobalContext";
+import { addTask, updateTask } from "../contexts/GlobalActions";
 
 const initialTask = {
   id: null,
@@ -14,7 +15,7 @@ const initialTask = {
 export default function TaskForm() {
   const [task, setTask] = useState(initialTask);
   const [validated, setValidated] = useState(false);
-  const { getState, addTask, updateTask } = useContext(GlobalContext);
+  const { getState, dispatch } = useContext(GlobalContext);
   const { tasks } = getState(); //! Version A
   const navigate = useNavigate();
   const params = useParams();
@@ -36,9 +37,9 @@ export default function TaskForm() {
       event.stopPropagation();
     } else {
       if (!task.id) {
-        addTask(task);
+        addTask(dispatch, task);
       } else {
-        updateTask(task);
+        updateTask(dispatch, task);
       }
 
       navigate("/list");

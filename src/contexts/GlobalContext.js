@@ -25,20 +25,12 @@ export const GlobalContext = createContext(initialState);
 
 export const ContextProvider = ({ children }) => {
   // const [state, dispatch] = useReducer(AppReducer, initialState); //! Original
-
-  const [state, dispatch, getState] = useEnhancedReducer(AppReducer, initialState, undefined, [logMiddleware(1)]); //! Version A
-  
+  const [state, dispatch, getState] = useEnhancedReducer(AppReducer, initialState, undefined, [logMiddleware(1)]); //! Version A  
   // const [state, dispatch] = useReducerX(AppReducer, initialState, [logReducerMiddleware]); //! Version B
-
-  const addTask = (task) => dispatch({ type: "ADD_TASK", payload: { ...task, id: uuidv4() } });
-
-  const deleteTask = (id) => dispatch({ type: "DELETE_TASK", payload: id });
-
-  const updateTask = (task) => dispatch({ type: "UPDATE_TASK", payload: task });
 
   return (
     <GlobalContext.Provider
-      value={{ state, getState, addTask, deleteTask, updateTask }}
+      value={{ state, getState, dispatch }}
     >
       {children}
     </GlobalContext.Provider>
