@@ -26,6 +26,9 @@ export default function Heading() {
             <LinkContainer to="/add">
               <Nav.Link>Task Form</Nav.Link>
             </LinkContainer>
+            <LinkContainer to="/users">
+              <Nav.Link>User List</Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>

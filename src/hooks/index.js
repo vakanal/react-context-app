@@ -1,5 +1,5 @@
 import { useRef, useCallback, useMemo, useReducer, useState } from "react";
-import { compose } from "./utilsHooks";
+import { compose } from "../utils";
 
 /**
  * Custom Hook - useEnhancedReducer
