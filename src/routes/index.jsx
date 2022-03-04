@@ -1,9 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
-import MainLayout from "../layouts/MainLayout";
+import MainLayout from "../layouts/Main";
 import Home from "../views/Home";
-import TaskForm from "../views/TaskForm";
 
 const TaskList = lazy(() => import("../views/TaskList"));
 const UserList = lazy(() => import("../views/UserList"));
@@ -14,12 +13,12 @@ export default function AppRoutes() {
       <Route path="/" element={<MainLayout />}>
         <Route index element={<Home />} />
         <Route
-          path="list"
+          path="tasks"
           element={
             <Suspense
               fallback={
                 <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
+                  <span className="visually-hidden">Loading Tasks...</span>
                 </Spinner>
               }
             >
@@ -27,15 +26,13 @@ export default function AppRoutes() {
             </Suspense>
           }
         />
-        <Route path="add" element={<TaskForm />} />
-        <Route path="edit/:id" element={<TaskForm />} />
         <Route
           path="users"
           element={
             <Suspense
               fallback={
                 <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
+                  <span className="visually-hidden">Loading Users...</span>
                 </Spinner>
               }
             >

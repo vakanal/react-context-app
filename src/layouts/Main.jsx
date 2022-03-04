@@ -9,13 +9,13 @@ export default function MainLayout() {
   return (
     <Container fluid="md">
       <Row>
+        <Col sm={2} className="d-none d-md-block d-lg-block">
+          <Asiding />
+        </Col>
         <Col>
           <ErrorBoundary>
             <Outlet />
           </ErrorBoundary>
-        </Col>
-        <Col sm={2} className="d-none d-md-block d-lg-block">
-          <Asiding />
         </Col>
       </Row>
     </Container>

@@ -1,10 +1,5 @@
 import { LinkContainer } from "react-router-bootstrap";
-import {
-  BsListTask,
-  BsHouse,
-  BsPencilSquare,
-  BsFillPersonLinesFill,
-} from "react-icons/bs";
+import { BsListTask, BsHouse, BsFillPersonLinesFill } from "react-icons/bs";
 import Nav from "react-bootstrap/Nav";
 
 export default function Asiding() {
@@ -18,16 +13,9 @@ export default function Asiding() {
         </LinkContainer>
       </Nav.Item>
       <Nav.Item>
-        <LinkContainer to="/list">
+        <LinkContainer to="/tasks">
           <Nav.Link>
             <BsListTask /> <span className="align-middle px-2">Tasks</span>
-          </Nav.Link>
-        </LinkContainer>
-      </Nav.Item>
-      <Nav.Item>
-        <LinkContainer to="/add">
-          <Nav.Link>
-            <BsPencilSquare /> <span className="align-middle px-2">Form</span>
           </Nav.Link>
         </LinkContainer>
       </Nav.Item>

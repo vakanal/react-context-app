@@ -20,11 +20,8 @@ export default function Heading() {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/list">
+            <LinkContainer to="/tasks">
               <Nav.Link>Task List</Nav.Link>
-            </LinkContainer>
-            <LinkContainer to="/add">
-              <Nav.Link>Task Form</Nav.Link>
             </LinkContainer>
             <LinkContainer to="/users">
               <Nav.Link>User List</Nav.Link>
