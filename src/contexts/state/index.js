@@ -35,4 +35,5 @@ export const initialState = {
       email: "Nathan@yesenia.net",
     },
   ],
+  modals: false,
 };

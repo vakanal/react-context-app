@@ -5,33 +5,28 @@ import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { AppContext } from "../contexts";
-import { deleteTask } from "../contexts/actions";
+import { deleteTask, showModal } from "../contexts/actions";
 import ModalsLayout from "../layouts/Modals";
 import TaskForm from "./TaskForm";
 
 export default function TaskList() {
-  const [show, setShow] = useState(false);
   const [taskId, setTaskId] = useState(null);
   const { getState, dispatch } = useContext(AppContext);
   const { tasks } = getState();
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShowModal = () => dispatch(showModal());
   const handleEdit = (id) => {
     setTaskId(id);
-    setShow(true);
+    handleShowModal();
   };
 
   return (
     <Card>
-      <ModalsLayout show={show} handleClose={handleClose} title="Task Form">
-        <TaskForm handleClose={handleClose} taskId={taskId} />
+      <ModalsLayout title="Task Form">
+        <TaskForm taskId={taskId} />
       </ModalsLayout>
 
       <Card.Header>
-        <Button onClick={handleShow}>
-          Add Task
-        </Button>
+        <Button onClick={handleShowModal}>Add Task</Button>
       </Card.Header>
 
       <Card.Body>

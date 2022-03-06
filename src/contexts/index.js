@@ -1,6 +1,6 @@
 import { createContext } from "react";
 import { initialState } from "./state";
-import { TasksReducer, UsersReducer } from "./reducers";
+import { TasksReducer, UsersReducer, ModalsReducer } from "./reducers";
 import { useEnhancedReducer } from "../hooks";
 import { combineReducers } from "./utils";
 import { logMiddleware } from "../middlewares";
@@ -9,7 +9,11 @@ export const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch, getState] = useEnhancedReducer(
-    combineReducers({ tasks: TasksReducer, users: UsersReducer }),
+    combineReducers({
+      tasks: TasksReducer,
+      users: UsersReducer,
+      modals: ModalsReducer,
+    }),
     initialState,
     undefined,
     [logMiddleware(1)]

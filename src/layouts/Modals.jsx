@@ -1,10 +1,17 @@
+import { useContext } from "react";
+import { AppContext } from "../contexts";
+import { closeModal } from "../contexts/actions";
 import Modal from "react-bootstrap/Modal";
 
-export default function Modals({ children, show, handleClose, title }) {
+export default function Modals({ children, title }) {
+  const { getState, dispatch } = useContext(AppContext);
+  const { modals: show } = getState();
+  const handleOnHide = () => dispatch(closeModal());
+
   return (
     <Modal
       show={show}
-      onHide={handleClose}
+      onHide={handleOnHide}
       animation={false}
       backdrop="static"
       keyboard={false}

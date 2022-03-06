@@ -6,7 +6,7 @@ import Card from "react-bootstrap/Card";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { AppContext } from "../contexts";
-import { addTask, updateTask } from "../contexts/actions";
+import { addTask, updateTask, closeModal } from "../contexts/actions";
 
 const initialTask = {
   id: null,
@@ -47,7 +47,7 @@ export default function TaskForm({ handleClose, taskId }) {
         dispatch(updateTask(task));
       }
 
-      handleClose();
+      dispatch(closeModal());
     }
 
     setValidated(true);
