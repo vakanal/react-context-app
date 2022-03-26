@@ -1,4 +1,5 @@
 import React from "react";
+import { AppContext } from "../contexts";
 import { compose } from "../utils";
 
 /**
@@ -68,4 +69,8 @@ export const useReducerX = (reducer, initialState, middlewares = []) => {
   const enhancedDispatch = compose.apply(undefined, chain)(dispatch);
 
   return [state, enhancedDispatch];
+};
+
+export const useAppContext = () => {
+  return React.useContext(AppContext);
 };

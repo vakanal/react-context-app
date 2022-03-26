@@ -4,14 +4,14 @@ import Table from "react-bootstrap/Table";
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { AppContext } from "../contexts";
+import { useAppContext } from "../hooks";
 import { deleteTask, showModal } from "../contexts/actions";
 import ModalsLayout from "../layouts/Modals";
 import TaskForm from "./TaskForm";
 
 export default function TaskList() {
   const [taskId, setTaskId] = React.useState(null);
-  const { getState, dispatch } = React.useContext(AppContext);
+  const { getState, dispatch } = useAppContext();
   const { tasks } = getState();
   const handleShowModal = () => dispatch(showModal());
   const handleEdit = (id) => {

@@ -1,11 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { AppContext } from "../contexts";
+import { useAppContext } from "../hooks";
 import { closeModal } from "../contexts/actions";
 import Modal from "react-bootstrap/Modal";
 
 export default function Modals({ children, title }) {
-  const { getState, dispatch } = React.useContext(AppContext);
+  const { getState, dispatch } = useAppContext();
   const { modals: show } = getState();
   const handleOnHide = () => dispatch(closeModal());
 

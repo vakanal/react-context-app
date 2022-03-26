@@ -1,9 +1,9 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
-import { AppContext } from "../contexts";
+import { useAppContext } from "../hooks";
 
 export default function UserList() {
-  const { getState } = React.useContext(AppContext);
+  const { getState } = useAppContext();
   const { users } = getState();
 
   return (

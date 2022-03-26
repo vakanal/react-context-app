@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
-import { AppContext } from "../contexts";
+import { useAppContext } from "../hooks";
 import { addTask, updateTask, closeModal } from "../contexts/actions";
 
 const initialTask = {
@@ -19,7 +19,7 @@ const initialTask = {
 export default function TaskForm({ taskId }) {
   const [task, setTask] = React.useState(initialTask);
   const [validated, setValidated] = React.useState(false);
-  const { getState, dispatch } = React.useContext(AppContext);
+  const { getState, dispatch } = useAppContext();
   const { tasks } = getState();
 
   const handleChange = (event) => {
