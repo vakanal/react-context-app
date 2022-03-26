@@ -1,4 +1,4 @@
-import { useRef, useCallback, useMemo, useReducer, useState } from "react";
+import React from "react";
 import { compose } from "../utils";
 
 /**
@@ -17,14 +17,18 @@ export const useEnhancedReducer = (
   initializer,
   middlewares = []
 ) => {
-  const lastState = useRef(initState);
-  const getState = useCallback(() => lastState.current, []);
-  const enhancedReducer = useRef(
+  const lastState = React.useRef(initState);
+  const getState = React.useCallback(() => lastState.current, []);
+  const enhancedReducer = React.useRef(
     (state, action) => (lastState.current = reducer(state, action))
   ).current;
-  const [state, dispatch] = useReducer(enhancedReducer, initState, initializer);
-  const middlewaresRef = useRef(middlewares);
-  const enhancedDispatch = useMemo(
+  const [state, dispatch] = React.useReducer(
+    enhancedReducer,
+    initState,
+    initializer
+  );
+  const middlewaresRef = React.useRef(middlewares);
+  const enhancedDispatch = React.useMemo(
     () =>
       middlewaresRef.current.reduceRight(
         (acc, mdw) => (action) => mdw(state)(getState)(acc)(action),
@@ -46,10 +50,10 @@ export const useEnhancedReducer = (
  */
 
 export const useReducerX = (reducer, initialState, middlewares = []) => {
-  const hook = useState(initialState);
+  const hook = React.useState(initialState);
   const state = hook[0];
   const setState = hook[1];
-  const draftState = useRef(initialState);
+  const draftState = React.useRef(initialState);
 
   const dispatch = (action) => {
     draftState.current = reducer(draftState.current, action);

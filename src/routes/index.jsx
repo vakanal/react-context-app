@@ -1,11 +1,11 @@
-import { Suspense, lazy } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Spinner from "react-bootstrap/Spinner";
 import MainLayout from "../layouts/Main";
 import Home from "../views/Home";
 
-const TaskList = lazy(() => import("../views/TaskList"));
-const UserList = lazy(() => import("../views/UserList"));
+const TaskList = React.lazy(() => import("../views/TaskList"));
+const UserList = React.lazy(() => import("../views/UserList"));
 
 export default function AppRoutes() {
   return (
@@ -15,7 +15,7 @@ export default function AppRoutes() {
         <Route
           path="tasks"
           element={
-            <Suspense
+            <React.Suspense
               fallback={
                 <Spinner animation="border" role="status">
                   <span className="visually-hidden">Loading Tasks...</span>
@@ -23,13 +23,13 @@ export default function AppRoutes() {
               }
             >
               <TaskList />
-            </Suspense>
+            </React.Suspense>
           }
         />
         <Route
           path="users"
           element={
-            <Suspense
+            <React.Suspense
               fallback={
                 <Spinner animation="border" role="status">
                   <span className="visually-hidden">Loading Users...</span>
@@ -37,7 +37,7 @@ export default function AppRoutes() {
               }
             >
               <UserList />
-            </Suspense>
+            </React.Suspense>
           }
         />
       </Route>

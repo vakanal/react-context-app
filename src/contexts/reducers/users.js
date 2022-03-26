@@ -4,7 +4,7 @@ export const UsersReducer = (state, action) => {
       return [...state, action.payload];
     case "DELETE_USER":
       return state.filter((user) => user.id !== action.payload);
-    case "UPDATE_USER":
+    case "UPDATE_USER": {
       const updatedUser = action.payload;
       const updatedUsers = state.users.map((user) => {
         if (user.id === updatedUser.id) {
@@ -15,8 +15,8 @@ export const UsersReducer = (state, action) => {
 
         return user;
       });
-
       return updatedUsers;
+    }
     default:
       return state;
   }

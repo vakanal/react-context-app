@@ -13,6 +13,7 @@ function Stack({ children, spacing, direction, wrap }) {
 }
 
 Stack.propTypes = {
+  children: PropTypes.node,
   spacing: PropTypes.number,
   wrap: PropTypes.bool,
   direction: PropTypes.oneOf(["row", "column"]),

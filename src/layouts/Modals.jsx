@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { AppContext } from "../contexts";
 import { closeModal } from "../contexts/actions";
 import Modal from "react-bootstrap/Modal";
 
 export default function Modals({ children, title }) {
-  const { getState, dispatch } = useContext(AppContext);
+  const { getState, dispatch } = React.useContext(AppContext);
   const { modals: show } = getState();
   const handleOnHide = () => dispatch(closeModal());
 
@@ -27,3 +28,8 @@ export default function Modals({ children, title }) {
     </Modal>
   );
 }
+
+Modals.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+};

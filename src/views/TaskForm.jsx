@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
@@ -15,10 +16,10 @@ const initialTask = {
   done: false,
 };
 
-export default function TaskForm({ handleClose, taskId }) {
-  const [task, setTask] = useState(initialTask);
-  const [validated, setValidated] = useState(false);
-  const { getState, dispatch } = useContext(AppContext);
+export default function TaskForm({ taskId }) {
+  const [task, setTask] = React.useState(initialTask);
+  const [validated, setValidated] = React.useState(false);
+  const { getState, dispatch } = React.useContext(AppContext);
   const { tasks } = getState();
 
   const handleChange = (event) => {
@@ -53,7 +54,7 @@ export default function TaskForm({ handleClose, taskId }) {
     setValidated(true);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     setTask(initialTask);
 
     const taskFound = tasks.find((task) => task.id === taskId);
@@ -145,3 +146,7 @@ export default function TaskForm({ handleClose, taskId }) {
     </Card>
   );
 }
+
+TaskForm.propTypes = {
+  taskId: PropTypes.string,
+};

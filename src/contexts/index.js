@@ -1,11 +1,12 @@
-import { createContext } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { initialState } from "./state";
 import { TasksReducer, UsersReducer, ModalsReducer } from "./reducers";
 import { useEnhancedReducer } from "../hooks";
 import { combineReducers } from "./utils";
 import { logMiddleware } from "../middlewares";
 
-export const AppContext = createContext();
+export const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [state, dispatch, getState] = useEnhancedReducer(
@@ -28,3 +29,6 @@ export const AppProvider = ({ children }) => {
 
 // const [state, dispatch] = useReducer(AppReducer, initialState); //! Original
 // const [state, dispatch] = useReducerX(AppReducer, initialState, [logReducerMiddleware]); //! Version B
+AppProvider.propTypes = {
+  children: PropTypes.node,
+};
